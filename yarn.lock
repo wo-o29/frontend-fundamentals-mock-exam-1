@@ -3854,6 +3854,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-simplikit@npm:^0.0.46":
+  version: 0.0.46
+  resolution: "react-simplikit@npm:0.0.46"
+  peerDependencies:
+    react: "*"
+  checksum: 10c0/f966f78845c4ff422d9c51cfa2fbab1be9314acbba3f9e4a469da1e8bba39b2a10ba54b8f634d4fa7b666f93378e2f96ae5a0a0bce97efaa197a22111a715808
+  languageName: node
+  linkType: hard
+
 "react@npm:^18":
   version: 18.3.1
   resolution: "react@npm:18.3.1"
@@ -4533,6 +4542,7 @@ __metadata:
     react-dom: "npm:^18"
     react-hook-form: "npm:^7.66.1"
     react-router-dom: "npm:^7.1.1"
+    react-simplikit: "npm:^0.0.46"
     tosslib: "file:./tosslib.tgz"
     typescript: "npm:~5.7.2"
     vite: "npm:^6.0.6"
