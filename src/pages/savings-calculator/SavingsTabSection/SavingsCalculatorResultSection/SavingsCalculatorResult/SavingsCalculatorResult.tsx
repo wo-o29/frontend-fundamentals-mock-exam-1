@@ -15,24 +15,20 @@ function SavingsCalculatorResult({ selectedProduct }: SavingsCalculatorResultPro
     return <ListRow contents={<ListRow.Texts type="1RowTypeA" top="상품을 선택해 주세요." />} />;
   }
 
-  return (
-    <>
-      {formatSavingsResults(savingsCalculatorResult).map(({ label, price }) => (
-        <ListRow
-          key={label}
-          contents={
-            <ListRow.Texts
-              type="2RowTypeA"
-              top={label}
-              topProps={{ color: colors.grey600 }}
-              bottom={`${formatLocalePrice(price)}원`}
-              bottomProps={{ fontWeight: 'bold', color: colors.blue600 }}
-            />
-          }
+  return formatSavingsResults(savingsCalculatorResult).map(({ label, price }) => (
+    <ListRow
+      key={label}
+      contents={
+        <ListRow.Texts
+          type="2RowTypeA"
+          top={label}
+          topProps={{ color: colors.grey600 }}
+          bottom={`${formatLocalePrice(price)}원`}
+          bottomProps={{ fontWeight: 'bold', color: colors.blue600 }}
         />
-      ))}
-    </>
-  );
+      }
+    />
+  ));
 }
 
 export default SavingsCalculatorResult;
