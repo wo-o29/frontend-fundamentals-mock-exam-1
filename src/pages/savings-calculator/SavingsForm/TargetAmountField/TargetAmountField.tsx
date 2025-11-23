@@ -9,8 +9,8 @@ function TargetAmountField() {
       suffix="원"
       label="목표 금액"
       placeholder="목표 금액을 입력하세요"
-      transform={value => parsePriceFromString(value)}
-      formatDisplayValue={value => formatLocalePrice(value)}
+      transform={parsePriceFromString}
+      formatDisplayValue={formatLocalePrice}
     />
   );
 }
