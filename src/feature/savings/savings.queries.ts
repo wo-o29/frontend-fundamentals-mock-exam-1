@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query';
 import { getSavingsProducts } from './apis/getSavingsProducts';
-import type { SavingsProduct, SavingsProductFilterOption } from './savings.type';
+import type { SavingsProductFilterOption } from './savings.type';
 import { getFilteredSavingsProducts } from './utils/getFilteredSavingsProducts';
 import { getTopAnnualRateSavingsProducts } from './utils/getTopAnnualRateSavingsProducts';
 
@@ -18,7 +18,7 @@ export const savingsQueries = {
     queryOptions({
       queryKey: savingsQueries.productDetail(id),
       queryFn: getSavingsProducts,
-      select: savingsProducts => savingsProducts.find(product => product.id === id) as SavingsProduct,
+      select: savingsProducts => savingsProducts.find(product => product.id === id) ?? null,
     }),
   getFilteredProducts: (filterOption: SavingsProductFilterOption) =>
     queryOptions({
