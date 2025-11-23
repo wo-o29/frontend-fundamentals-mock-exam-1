@@ -1,12 +1,11 @@
-import type { SavingsProduct } from 'feature/savings/savings.type';
 import { useState } from 'react';
 
-export const useSelectedSavingsProduct = () => {
-  const [selectedSavingsProduct, setSelectedProductProduct] = useState<SavingsProduct | null>(null);
+export const useSelectedProductId = () => {
+  const [selectedProductId, setSelectedProductProductId] = useState<string | null>(null);
 
-  const onSavingsProductSelect = (savingsProduct: SavingsProduct) => {
-    setSelectedProductProduct(savingsProduct);
+  const onSavingsProductSelect = (id: string) => {
+    setSelectedProductProductId(id);
   };
 
-  return { selectedSavingsProduct, onSavingsProductSelect };
+  return { selectedProductId, onSavingsProductSelect };
 };

@@ -5,13 +5,13 @@ import { ListRow, Border, Assets } from 'tosslib';
 
 interface RecommendSavingsProductListProps {
   recommendSavingsProducts: SavingsProduct[];
-  selectedProduct: SavingsProduct | null;
-  onClickItem: (savingsProduct: SavingsProduct) => void;
+  selectedProductId: string | null;
+  onClickItem: (id: string) => void;
 }
 
 function RecommendSavingsProductList({
   recommendSavingsProducts,
-  selectedProduct,
+  selectedProductId,
   onClickItem,
 }: RecommendSavingsProductListProps) {
   if (recommendSavingsProducts.length === 0) {
@@ -21,14 +21,14 @@ function RecommendSavingsProductList({
   return (
     <Separated by={<Border height={1} />}>
       {recommendSavingsProducts.map(savingsProduct => {
-        const isSelected = selectedProduct?.name === savingsProduct.name;
+        const isSelected = selectedProductId === savingsProduct.id;
 
         return (
           <SavingsProductItem
             key={savingsProduct.id}
             savingsProduct={savingsProduct}
             rightAddon={isSelected && <Assets.Icon name="icon-check-circle-green" />}
-            onClick={onClickItem}
+            onClick={() => onClickItem(savingsProduct.id)}
           />
         );
       })}

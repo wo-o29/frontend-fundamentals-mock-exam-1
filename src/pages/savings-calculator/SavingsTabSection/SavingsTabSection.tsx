@@ -1,28 +1,28 @@
+import { match } from 'ts-pattern';
 import { useSavingsTab } from './hooks/useSavingsTab';
-import { useSelectedSavingsProduct } from './hooks/useSelectedSavingsProduct';
+import { useSelectedProductId } from './hooks/useSelectedSavingsProduct';
+import RecommendSavingsProductSection from './RecommendSavingsProductSection/RecommendSavingsProductSection';
+import SavingsCalculatorResultLayout from './SavingsCalculatorResultLayout/SavingsCalculatorResultLayout';
 import SavingsProductListSection from './SavingsProductListSection/SavingsProductListSection';
 import SavingsTab from './SavingsTab/SavingsTab';
-import { match } from 'ts-pattern';
-import SavingsCalculatorResultSection from './SavingsCalculatorResultSection/SavingsCalculatorResultSection';
-import RecommendSavingsProductSection from './RecommendSavingsProductSection/RecommendSavingsProductSection';
 
 function SavingsTabSection() {
   const { currentSavingsTab, onSavingsTabChange } = useSavingsTab();
-  const { selectedSavingsProduct, onSavingsProductSelect } = useSelectedSavingsProduct();
+  const { selectedProductId, onSavingsProductSelect } = useSelectedProductId();
 
   return (
     <>
       <SavingsTab currentTab={currentSavingsTab} onChange={onSavingsTabChange} />
       {match(currentSavingsTab)
         .with('products', () => (
-          <SavingsProductListSection selectedProduct={selectedSavingsProduct} onClickItem={onSavingsProductSelect} />
+          <SavingsProductListSection selectedProductId={selectedProductId} onClickItem={onSavingsProductSelect} />
         ))
         .with('results', () => (
-          <SavingsCalculatorResultSection
-            selectedProduct={selectedSavingsProduct}
+          <SavingsCalculatorResultLayout
+            selectedProductId={selectedProductId}
             bottomAddon={
               <RecommendSavingsProductSection
-                selectedProduct={selectedSavingsProduct}
+                selectedProductId={selectedProductId}
                 onClickItem={onSavingsProductSelect}
               />
             }

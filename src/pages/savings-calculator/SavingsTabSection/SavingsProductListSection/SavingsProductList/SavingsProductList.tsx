@@ -5,11 +5,11 @@ import { ListRow, Border, Assets } from 'tosslib';
 
 interface SavingsProductList1Props {
   savingsProducts: SavingsProduct[];
-  selectedProduct: SavingsProduct | null;
-  onClickItem: (savingsProduct: SavingsProduct) => void;
+  selectedProductId: string | null;
+  onClickItem: (id: string) => void;
 }
 
-function SavingsProductList({ savingsProducts, selectedProduct, onClickItem }: SavingsProductList1Props) {
+function SavingsProductList({ savingsProducts, selectedProductId, onClickItem }: SavingsProductList1Props) {
   if (savingsProducts.length === 0) {
     return <ListRow contents={<ListRow.Texts type="1RowTypeA" top="조건에 맞는 적금 상품이 없어요." />} />;
   }
@@ -17,14 +17,14 @@ function SavingsProductList({ savingsProducts, selectedProduct, onClickItem }: S
   return (
     <Separated by={<Border height={1} />}>
       {savingsProducts.map(savingsProduct => {
-        const isSelected = selectedProduct?.name === savingsProduct.name;
+        const isSelected = selectedProductId === savingsProduct.id;
 
         return (
           <SavingsProductItem
             key={savingsProduct.id}
             savingsProduct={savingsProduct}
             rightAddon={isSelected && <Assets.Icon name="icon-check-circle-green" />}
-            onClick={onClickItem}
+            onClick={() => onClickItem(savingsProduct.id)}
           />
         );
       })}

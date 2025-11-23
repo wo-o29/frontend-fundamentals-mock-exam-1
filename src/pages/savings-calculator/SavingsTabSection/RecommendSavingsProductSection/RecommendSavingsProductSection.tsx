@@ -1,7 +1,6 @@
 import { ErrorBoundary } from '@suspensive/react';
 import { SuspenseQuery } from '@suspensive/react-query';
 import { savingsQueries } from 'feature/savings/savings.queries';
-import type { SavingsProduct } from 'feature/savings/savings.type';
 import { useSavingsFormDataContext } from 'pages/savings-calculator/providers/SavingFromProvider';
 import { Suspense } from 'react';
 import ErrorFallback from 'shared/components/ErrorFallback/ErrorFallback';
@@ -9,11 +8,11 @@ import { ListHeader, Spacing } from 'tosslib';
 import RecommendSavingsProductList from './RecommendSavingsProductList/RecommendSavingsProductList';
 
 interface RecommendSavingsProductSectionProps {
-  selectedProduct: SavingsProduct | null;
-  onClickItem: (savingsProduct: SavingsProduct) => void;
+  selectedProductId: string | null;
+  onClickItem: (id: string) => void;
 }
 
-function RecommendSavingsProductSection({ selectedProduct, onClickItem }: RecommendSavingsProductSectionProps) {
+function RecommendSavingsProductSection({ selectedProductId, onClickItem }: RecommendSavingsProductSectionProps) {
   const { monthlyAmount, savingsPeriod } = useSavingsFormDataContext();
 
   return (
@@ -27,7 +26,7 @@ function RecommendSavingsProductSection({ selectedProduct, onClickItem }: Recomm
             {({ data: savingsProducts }) => (
               <RecommendSavingsProductList
                 recommendSavingsProducts={savingsProducts}
-                selectedProduct={selectedProduct}
+                selectedProductId={selectedProductId}
                 onClickItem={onClickItem}
               />
             )}
