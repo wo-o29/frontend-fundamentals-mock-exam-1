@@ -23,7 +23,7 @@ function SavingsCalculatorResultSection({ selectedProductId }: SavingsCalculator
               return (
                 <ListRow
                   contents={
-                    <ListRow.Texts type="1RowTypeA" top="선택한 상품을 찾지 못했어요. 다른 상품을 선택해주세요." />
+                    <ListRow.Texts type="1RowTypeA" top="선택한 상품을 찾지 못했어요. 상품을 다시 선택해주세요." />
                   }
                 />
               );
